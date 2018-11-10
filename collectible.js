@@ -2,6 +2,7 @@
     game.collectible_chance = 0.25;
     game.collectibles = [];
     var life_time = 8500;
+    var collectible_size = 16;
 
     game.collectible_types = {
         score: {
@@ -52,7 +53,7 @@
         this.prototype = type;
         this.renderable = gameEngine.renderer.createRenderable("CIRCLE");
         this.renderable.color = this.prototype.color;
-        this.renderable.radius = 8;
+        this.renderable.radius = collectible_size;
         this.renderable.x = position.x;
         this.renderable.y = position.y;
         this.time_alive = 0;
