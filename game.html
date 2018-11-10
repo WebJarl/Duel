@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Duel</title>
+        <style>
+            html, body {
+                background-color: rgb(32, 32, 32);
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                background-image: url('space.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+            }
+        </style>
+        <script>
+            function onLoad() {
+                gameEngine.init({
+                    canvas: {
+                        classList: "centered",
+                        fullscreen: true
+                    },
+                    onTick: game.onTick
+                });
+                
+                game.init();
+            }
+        </script>
+    </head>
+    <body onload="onLoad()">
+        <script src="engine/index.js"></script>
+        <script src="engine/collision.js"></script>
+        <script src="engine/renderer.js"></script>
+        <script src="engine/keyboard.js"></script>
+        <script src="engine/gamepad.js"></script>
+        <script src="engine/mouse.js"></script>
+        <script src="engine/particle.js"></script>
+        <script src="game.js"></script>
+        <script src="projectile.js"></script>
+        <script src="shoot.js"></script>
+        <script src="progress_bar.js"></script>
+        <script src="shield.js"></script>
+        <script src="player.js"></script>
+        <script src="asteroid.js"></script>
+        <script src="score.js"></script>
+        <script src="collectible.js"></script>
+    </body>
+</html>

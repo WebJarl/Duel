@@ -1,47 +1,97 @@
 <!doctype html>
 <html>
-    <head lang="en" dir="rtl">
+    <head lang="en">
         <meta charset="utf-8">
-        <title>CMO</title>
+        <title>Duel</title>
+
         <style>
             html, body {
-                background-color: rgb(32, 32, 32);
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
+                background-color: rgb(16, 16, 16);
+                color: white;
+                font-family: sans-serif;
+                font-size: 20px;
+            }
+            
+            h1, h2, h3, h4, h5, p {
+                text-align: center;
             }
 
-            .centered {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
+            .Controls {
+                display: flex;
+            }
+
+            .Controls .ControlsContainer {
+                flex-grow: 1;
+            }
+
+            button {
+                font-size: 32px;
+                padding: 0.5em 4em;
+                margin-bottom: 1em;
+                cursor: pointer;
+                background-color: rgb(255, 128, 32);
+                font-weight: 800;
+                border: none;
+                transition: all 0.3s;
+            }
+
+            button:hover {
+                background-color: rgb(255, 142, 32);
+                transform: scale(1.05);
+                -ms-transform: scale(1.05);
+                -moz-transform: scale(1.05);
+                -webkit-transform: scale(1.05);
             }
         </style>
-        <script>
-            function onLoad() {
-                gameEngine.init({
-                    canvas: {
-                        classList: "centered",
-                        fullscreen: true
-                    },
-                    onTick: game.onTick
-                });
-                
-                game.init();
-            }
-        </script>
     </head>
-    <body onload="onLoad()">
-        <script src="engine/spritesheet.js"></script>
-        <script src="engine/tmx.js"></script>
-        <script src="engine/index.js"></script>
-        <script src="engine/renderer.js"></script>
-        <script src="game.js"></script>
+    <body>
+        <h1>Welcome to <u>Duel</u>.</h1>
+        <p>The game and its engine are 100% open source.</p>
+        <p>Connect two or more controllers for local multiplayer.</p>
+        <h2>Controls</h2>
+        <div class="Controls">
+            <div class="ControlsContainer">
+                <h3>Mouse & Keyboard</h3>
+                <p>
+                    W,A,S,D - Movement
+                </p>
+                <p>
+                    Q, E - Switch weapons
+                </p>
+                <p>
+                    Click to Shoot
+                </p>
+                <p>
+                    Space - Shield (for multiplayer)
+                </p>
+            </div>
+            <div class="ControlsContainer">
+                <h3>Gamepads (XBOX360 Controllers)</h3>
+                <p>
+                    Left Thumb Stick / Up, Down, Left, Right - Movement
+                </p>
+                <p>
+                    Right Thumb Stick - Aim
+                </p>
+                <p>
+                    RB, LB - Switch weapons
+                </p>
+                <p>
+                    RT - Shoot
+                </p>
+                <p>
+                    LT - Shield (for multiplayer)
+                </p>
+            </div>
+        </div>
+        <p>
+            <a href="game.html">
+                <button>Click here to play.</button>
+            </a>
+        </p>
+        <p>
+            <a href="https://github.com/WebJarl/Duel">Game source code @ GitHub</a> /
+            <a href="https://github.com/WebJarl/Engine">Engine source code @ GitHub</a>
+        </p>
     </body>
 </html>

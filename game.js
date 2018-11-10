@@ -1,39 +1,39 @@
 var game = (function() {
-    var player = {};
+    var players = {};
+    var bg_music = new Audio("ost.wav");
+    bg_music.volume = 0.2;
+    bg_music.loop = true;
+    bg_music.play();
 
     return new function() {
         this.init = function() {
-            player.renderable = gameEngine.renderer.createRenderable("RECTANGLE");
-            player.renderable.w = 32;
-            player.renderable.h = 32;
+            players[0] = new game.player();
         };
 
         this.onTick = function(dt) {
-            
-
-            if(gameEngine.keyIsDown('ArrowUp') || gameEngine.keyIsDown('w')) {
-                player.renderable.y -= 0.1 * dt;
-                player.renderable.sprite = 0;
+            var scores = [];
+            for(var player_i in players) {
+                var player = players[player_i];
+                scores.push(player.score);
+                player.tick(player_i, dt);
             }
-            if(gameEngine.keyIsDown('ArrowDown') || gameEngine.keyIsDown('s')) {
-                player.renderable.y += 0.1 * dt;
-                player.renderable.sprite = 1;
-            }
-            if(gameEngine.keyIsDown('ArrowLeft') || gameEngine.keyIsDown('a')) {
-                player.renderable.x -= 0.1 * dt;
-                player.renderable.sprite = 2;
-            }
-            if(gameEngine.keyIsDown('ArrowRight') || gameEngine.keyIsDown('d')) {
-                player.renderable.x += 0.1 * dt;
-                player.renderable.sprite = 3;
-            }
-            if(gameEngine.keyIsDown('e')) {
-                gameEngine.renderer.zoomCamera(0.99);
-                console.log(player.renderable);
-            }
-            if(gameEngine.keyIsDown('q')) {
-                gameEngine.renderer.zoomCamera(1.01);
-            }
+            game.showScores(scores);
+            game.handleShooting(dt, players);
+            game.handleShields(dt);
+            game.handleAsteroids(dt, players);
+            game.handleCollectibles(dt, players);
         };
+
+        gameEngine.onGamePadConnected(function(index) {
+            if(index > 0) {
+                players[index] = new game.player();
+            }
+        });
+        gameEngine.onGamePadDisconnected(function(index) {
+            if(index != 0) {
+                players[index].destroy();
+                delete players[index];
+            }
+        });
     }();
 }());
