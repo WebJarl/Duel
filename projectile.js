@@ -10,9 +10,9 @@
             velocityFunction: 'easeOut',
             damage: 1,
             color: 'yellow',
-            cooldown: 50,
+            cooldown: 100,
             lifetime: 2000,
-            size: 2,
+            size: 4,
             sound: gun_sound
         },
         miningTool: {
@@ -20,19 +20,19 @@
             velocityFunction: 'return',
             damage: 1,
             color: 'cyan',
-            cooldown: 0,
-            lifetime: 333,
+            cooldown: 75,
+            lifetime: 1500,
             size: 3,
             sound: energy_sound
         },
         clawForce: {
             velocity: 2,
             velocityFunction: 'return',
-            damage: 3,
+            damage: 1,
             color: 'magenta',
             cooldown: 100,
             lifetime: 1000,
-            size: 6,
+            size: 4,
             rotated: true,
             rotationRate: 1/128,
             sound: energy_sound
@@ -64,7 +64,7 @@
         SlapMissile: {
             velocity: 1,
             velocityFunction: 'return',
-            damage: 30,
+            damage: 40,
             color: 'red',
             cooldown: 2000,
             lifetime: 4000,
@@ -73,12 +73,12 @@
             sound: missile_sound
         },
         EMP: {
-            velocity: 2,
+            velocity: 4,
             velocityFunction: 'easeIn',
             damage: 50,
             color: 'yellow',
             cooldown: 2000,
-            lifetime: 500,
+            lifetime: 750,
             size: 12,
             rotated: true,
             rotationRate: 1/32,
